@@ -8,8 +8,9 @@
     cursor: pointer;
 
     .color-bubble {
-      height: 12px;
-      flex: 0 0 12px;
+      height: 8px;
+      flex: 0 0 8px;
+      border-radius: 3px;
       opacity: 1;
       margin: 0 .5rem 0 .25rem;
     }
@@ -22,12 +23,20 @@
     
     &.other-menu-items li,
     li > div {
-      height: 44px;
+      height: 36px;
       display: flex;
       align-items: center;
+      border-radius: $radius;
+      margin-block-end: 2px;
+      transition: background-color $transition;
 
       &:hover {
-        background: var(--white);
+        background: var(--grey-100);
+      }
+
+      &:has(> a.router-link-exact-active) {
+        background: hsla(var(--primary-hsl), .1);
+        font-weight: 600;
       }
     }
 
@@ -53,7 +62,7 @@
     }
 
     .menu-item-icon {
-      color: var(--grey-400);
+      color: var(--grey-500);
     }
 
     .menu-list-dropdown-trigger {
@@ -96,7 +105,8 @@
 
       > a {
         color: $vikunja-nav-color;
-        padding: .75rem .5rem .75rem .25rem;
+        font-weight: inherit;
+        padding: .5rem .5rem .5rem .25rem;
         transition: all 0.2s ease;
 
         border-radius: 0;
