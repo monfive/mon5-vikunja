@@ -12,6 +12,11 @@
 
 $family-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif;
 
+// UI refresh radii, backed by CSS custom properties in custom-properties/colors.scss
+$radius-small: 6px;
+$radius: var(--radius);
+$radius-large: var(--radius-large);
+
 // the default values get overwritten by the definitions above
 @import "bulma-css-variables/sass/utilities/_all";
 
@@ -28,7 +33,7 @@ $site-background: var(--grey-100);
 $transition-duration: 150ms;
 $transition: $transition-duration ease;
 
-$button-height: 34px;
+$button-height: 36px;
 $switch-view-height: 2.69rem;
 
 $navbar-height: 4rem;
