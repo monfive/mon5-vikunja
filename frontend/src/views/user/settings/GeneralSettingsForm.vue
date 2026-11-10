@@ -557,6 +557,27 @@ async function updateSettings() {
 .field-group {
 	display: grid;
 	grid-template-columns: 1fr;
+
+	// FormField roots get this scope; rows divided like the refresh settings panels
+	> .field {
+		margin: 0;
+		padding-block: .875rem;
+		border-block-start: 1px solid var(--border-light);
+
+		&:first-child {
+			border-block-start: 0;
+			padding-block-start: 0;
+		}
+
+		&:last-child {
+			padding-block-end: 0;
+		}
+	}
+
+	:deep(label.two-col > span) {
+		font-weight: 600;
+		color: var(--text-strong);
+	}
 }
 
 .sticky-save {

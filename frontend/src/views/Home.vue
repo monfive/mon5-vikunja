@@ -1,5 +1,5 @@
 <template>
-	<div class="content has-text-centered">
+	<div class="content home">
 		<h1 v-if="salutation">
 			{{ salutation }}
 		</h1>
@@ -129,6 +129,25 @@ function handleClearLabelFilter() {
 </script>
 
 <style scoped lang="scss">
+.home {
+	max-inline-size: 70rem;
+	margin-inline: auto;
+
+	> h1 {
+		font-size: 1.75rem;
+		margin-block: .5rem 1.25rem;
+	}
+
+	h2 {
+		font-size: 1.125rem;
+	}
+	// the outer container already caps the width; keep everything on one left edge
+	:deep(.is-max-width-desktop) {
+		max-inline-size: none;
+		margin-inline: 0;
+	}
+}
+
 .show-tasks {
 	margin-block-start: 2rem;
 }
