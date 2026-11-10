@@ -5,13 +5,23 @@
 	}
 }
 
-// Task detail sections are h2 for a correct heading outline but keep the smaller h3 sizing
+// Task detail sections are h2 for a correct heading outline; styled as a panel header row
 .content h2.task-section-title {
-	font-size: 1.5em;
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	min-block-size: 3rem;
+	margin: 0 -1rem 1rem;
+	padding: 0 1rem;
+	border-block-end: 1px solid var(--border-light);
+	font-family: $family-sans-serif;
+	font-size: .9375rem;
+	font-weight: 700;
 
 	.icon,
 	.is-small {
-		font-size: 1rem;
+		font-size: .875rem;
+		color: var(--grey-500);
 	}
 }
 

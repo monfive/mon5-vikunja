@@ -1267,6 +1267,7 @@ function setRelatedTasksActive() {
 
 .subtitle {
 	color: var(--grey-500);
+	font-size: .875rem;
 	margin-block-end: 1rem;
 
 	a {
@@ -1350,6 +1351,20 @@ h2 .button {
 	@media print {
 		inline-size: 100% !important;
 	}
+
+	// Each section is a panel; Comments' root gets this scope too
+	> .content {
+		background: var(--white);
+		border: 1px solid var(--border-light);
+		border-radius: $radius-large;
+		padding: 0 1rem 1rem;
+		margin-block-end: 1rem;
+
+		@media print {
+			border: 0;
+			padding: 0;
+		}
+	}
 }
 
 // Bulma stacks columns as blocks on narrow screens, so flex is needed for `order`.
@@ -1400,14 +1415,15 @@ h2 .button {
 		background-color: transparent;
 		box-shadow: none;
 
-		// bright brand green with fixed dark text passes contrast in both themes
+		// outlined success: --success-text is dark green on light, bright green on dark
 		&.is-pending {
-			background-color: var(--success);
-			color: hsl(215, 27.9%, 16.9%);
+			background-color: var(--scheme-main);
+			border-color: var(--success-text);
+			color: var(--success-text);
 
 			&:hover,
 			&:focus {
-				filter: brightness(1.05);
+				background-color: color-mix(in srgb, var(--success) 10%, var(--scheme-main));
 			}
 		}
 	}
@@ -1444,8 +1460,11 @@ h2 .button {
 
 .property-list {
 	margin: 0;
-	border-block-start: 1px solid var(--grey-200);
-	font-size: .9375rem;
+	padding: .25rem .5rem .25rem .75rem;
+	background: var(--white);
+	border: 1px solid var(--border-light);
+	border-radius: $radius-large;
+	font-size: .875rem;
 }
 
 .property-empty,
