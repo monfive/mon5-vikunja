@@ -300,13 +300,13 @@ defineExpose({
 	}
 
 	.icon {
-		color: var(--grey-300);
+		color: var(--primary);
 	}
 
 	.task-icon, 
 	:deep(.quick-add-magic-trigger-btn) {
 		position: absolute;
-		inset-block-start: .75rem;
+		inset-block-start: 1rem;
 	}
 
 	:deep(.quick-add-magic-trigger-btn) {
@@ -333,8 +333,17 @@ defineExpose({
 }
 
 .add-task-textarea {
-	transition: border-color $transition;
+	transition: border-color $transition, box-shadow $transition;
 	resize: none;
+	min-block-size: 48px;
+	padding-block: .75rem;
+	border-radius: $radius-medium;
+	font-size: .9375rem;
+
+	&:focus {
+		border-color: var(--primary);
+		box-shadow: 0 0 0 3px hsla(var(--primary-hsl), .15) !important;
+	}
 }
 
 // Adding this class when the textarea has no text prevents the textarea from wrapping the placeholder.

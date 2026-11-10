@@ -15,6 +15,7 @@ $family-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif;
 // UI refresh radii, backed by CSS custom properties in custom-properties/colors.scss
 $radius-small: 6px;
 $radius: var(--radius);
+$radius-medium: var(--radius-medium);
 $radius-large: var(--radius-large);
 
 // the default values get overwritten by the definitions above

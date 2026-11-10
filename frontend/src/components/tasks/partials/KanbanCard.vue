@@ -4,6 +4,7 @@
 		class="task loader-container draggable"
 		:class="{
 			'is-loading': showLoading,
+			'is-done': task.done,
 			'draggable': !loadingInternal,
 			'has-light-text': !colorIsDark(color),
 			'has-custom-background-color': color ?? undefined,
@@ -318,10 +319,26 @@ $task-background: var(--white);
 	box-shadow: var(--shadow-xs);
 	display: block;
 
-	font-size: .9rem;
-	border-radius: $radius;
+	font-size: .875rem;
+	border: 1px solid var(--kanban-column-border);
+	border-radius: $radius-medium;
 	background: $task-background;
 	overflow: hidden;
+	transition: border-color $transition, box-shadow $transition;
+
+	&:hover {
+		border-color: hsla(var(--primary-hsl), .45);
+		box-shadow: var(--shadow-md);
+	}
+
+	&.is-done:not(.has-custom-background-color) {
+		background: var(--grey-50);
+
+		.kanban-card__title-link {
+			color: var(--text-muted);
+			text-decoration: line-through;
+		}
+	}
 
 	&.loader-container.is-loading::after {
 		inline-size: 1.5rem;
@@ -333,7 +350,8 @@ $task-background: var(--white);
 
 	h3 {
 		font-family: $family-sans-serif;
-		font-size: .85rem;
+		font-size: .875rem;
+		font-weight: 600;
 		word-break: break-word;
 	}
 

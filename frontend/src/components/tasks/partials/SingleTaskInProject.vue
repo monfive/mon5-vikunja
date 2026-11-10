@@ -437,7 +437,8 @@ defineExpose({
 .task {
 	display: flex;
 	flex-wrap: wrap;
-	padding: .4rem;
+	min-block-size: 44px;
+	padding: .4rem .75rem;
 	transition: background-color $transition;
 	align-items: center;
 	cursor: pointer;

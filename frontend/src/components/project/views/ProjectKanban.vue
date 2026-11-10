@@ -899,8 +899,8 @@ function unCollapseBucket(bucket: BucketResponse) {
 
 <style lang="scss">
 $ease-out: all .3s cubic-bezier(0.23, 1, 0.32, 1);
-$bucket-width: 300px;
-$bucket-header-height: 60px;
+$bucket-width: 296px;
+$bucket-header-height: 48px;
 $bucket-right-margin: 1rem;
 $crazy-height-calculation: '100vh - 4.5rem - 1.5rem - 1rem - 1.5rem - 11px';
 $crazy-height-calculation-tasks: '#{$crazy-height-calculation} - 1rem - 2.5rem - 2rem - #{$button-height} - 1rem';
@@ -930,6 +930,7 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 
 	&-bucket-container {
 		display: flex;
+		align-items: flex-start;
 		list-style: none;
 	}
 
@@ -954,7 +955,9 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 	}
 
 	.bucket {
-		border-radius: $radius;
+		border-radius: $radius-large;
+		background-color: var(--kanban-column-background);
+		border: 1px solid var(--kanban-column-border);
 		position: relative;
 
 		margin: 0 $bucket-right-margin 0 0;
@@ -976,7 +979,7 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 		}
 
 		.task-item {
-			background-color: var(--grey-100);
+			background-color: transparent;
 			padding: .25rem .5rem;
 			position: relative;
 
@@ -1016,10 +1019,20 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 			// to hide the fact we just made the button smaller.
 			min-inline-size: calc(#{$bucket-width} + 1rem);
 			background: transparent;
+			border: 0;
 
 			.button {
-				background: var(--grey-100);
+				background: transparent;
+				border: 1.5px dashed var(--grey-400);
+				border-radius: $radius-large;
+				block-size: 48px;
 				inline-size: 100%;
+
+				&:hover {
+					border-color: var(--primary);
+					color: var(--primary);
+					background: var(--white);
+				}
 			}
 		}
 
@@ -1038,7 +1051,7 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 	}
 
 	.bucket-header {
-		background-color: var(--grey-100);
+		background-color: transparent;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -1050,9 +1063,15 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 		}
 
 		.limit {
-			padding: 0 .5rem;
-			font-weight: bold;
+			padding: 0 .45rem;
+			margin-inline: .25rem;
+			font-size: .75rem;
+			font-weight: 700;
+			line-height: 20px;
 			white-space: nowrap;
+			color: var(--grey-700);
+			background: var(--kanban-column-border);
+			border-radius: 10px;
 
 			&.is-max {
 				color: var(--danger-text);
@@ -1077,18 +1096,20 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 		z-index: 2;
 		block-size: min-content;
 		padding: .5rem;
-		background-color: var(--grey-100);
-		border-end-start-radius: $radius;
-		border-end-end-radius: $radius;
+		background-color: var(--kanban-column-background);
+		border-end-start-radius: $radius-large;
+		border-end-end-radius: $radius-large;
 		transform: none;
 		// At fractional device pixel ratios the scroll clip ends below the sticky footer, showing a sliver of tasks
-		box-shadow: 0 1px 0 var(--grey-100);
+		box-shadow: 0 1px 0 var(--kanban-column-background);
 
 		.button {
 			background-color: transparent;
+			border-color: transparent;
+			justify-content: flex-start;
 
 			&:hover {
-				background-color: var(--white);
+				background-color: hsla(var(--grey-500-hsl), .12);
 			}
 		}
 	}
