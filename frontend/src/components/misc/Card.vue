@@ -91,7 +91,7 @@ const showLoading = useDelayedLoading(() => props.loading)
 	align-items: stretch;
 	display: flex;
 	box-shadow: none;
-	border-block-end: 1px solid var(--border-light);
+	border-block-end: 1px solid var(--card-border-color);
 	min-block-size: 3rem;
 	border-radius: $radius-large $radius-large 0 0;
 }
