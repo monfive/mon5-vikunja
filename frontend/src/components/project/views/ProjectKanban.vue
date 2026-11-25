@@ -930,7 +930,6 @@ $filter-container-height: '1rem - #{$switch-view-height}';
 
 	&-bucket-container {
 		display: flex;
-		align-items: flex-start;
 		list-style: none;
 	}
 
