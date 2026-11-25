@@ -10,12 +10,17 @@ IMAGE=mon5-vikunja
 
 cd "$(dirname "$0")/.."
 
+# main mirrors upstream; deploying it would ship stock Vikunja without our changes.
+BRANCH=$(git branch --show-current)
+[ "$BRANCH" = mon5 ] || { echo "Checked out '$BRANCH', expected 'mon5' (git switch mon5)" >&2; exit 1; }
+
 git pull --ff-only
 
 # Forks don't carry upstream's release tags; fetch them so the version reads like v2.8.0-81-g<sha>
 git remote get-url upstream >/dev/null 2>&1 || git remote add upstream https://github.com/go-vikunja/vikunja.git
 git fetch --quiet upstream --tags
-VERSION=$(git describe --tags --always)
+# Match only upstream release tags, so other tags (e.g. mon5-backup/*) can't leak into the version / docker tag.
+VERSION=$(git describe --tags --always --match 'v[0-9]*')
 
 echo "Building $IMAGE:$VERSION"
 docker build -t "$IMAGE:latest" -t "$IMAGE:$VERSION" --build-arg RELEASE_VERSION="$VERSION" .
