@@ -20,6 +20,14 @@ gh pr create -B mon5 -H main --title "chore: merge upstream into mon5"   # resol
 
 Without the bypass, push `upstream/main` to a `sync-upstream-<date>` branch and open a PR into `main` instead.
 
+## CI
+
+All upstream workflows are disabled on the fork (`gh workflow disable`, a GitHub setting, so upstream syncs don't undo it). The only workflow is `.github/workflows/mon5.yml`: frontend lint, stylelint, typecheck, unit tests and build, on PRs and pushes to `mon5`.
+
+**The backend is not tested here.** We don't change it, and upstream's CI tests it before it reaches `main`. If we ever touch the backend (`pkg/`, migrations, etc.), revisit this: add API tests on sqlite and postgres (see `test-api` in `.github/workflows/test.yml`) to `mon5.yml`.
+
+To re-enable an upstream workflow: `gh workflow enable "<name>"`.
+
 ## Deploy
 
 On the VM, the checkout must be on `mon5` (`git switch mon5`). Then run `mon5/deploy.sh <compose-dir>`.
