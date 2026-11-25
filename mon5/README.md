@@ -3,7 +3,7 @@
 ## Branches
 
 - `main`: mirror of `go-vikunja/vikunja` `main`. It only ever gets upstream commits, never ours.
-- `mon5`: our main and the GitHub default branch. This is what we deploy.
+- `mon5`: our main and the GitHub default branch. This is what we deploy. Repo ruleset `mon5_protect`: changes only via PR with a merge commit, no force push or deletion (org admins can bypass).
 - Feature branches: start from `mon5` and open PRs back into `mon5`.
 
 Keep changes frontend-only where possible, and keep fork-only files under `mon5/`, so upstream merges stay conflict-free.
