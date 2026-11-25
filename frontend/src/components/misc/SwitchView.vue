@@ -19,35 +19,34 @@ withDefaults(defineProps<{
 
 <style lang="scss" scoped>
 .switch-view {
-	background: var(--white);
+	background: var(--switch-view-track);
 	display: inline-flex;
-	border-radius: $radius;
-	font-size: .75rem;
-	box-shadow: var(--shadow-sm);
-	padding: .5rem;
+	gap: 2px;
+	border-radius: $radius-medium;
+	font-size: .8125rem;
+	font-weight: 600;
+	padding: 3px;
 }
 
 ::v-slotted(.switch-view-button) {
-	padding: .25rem .5rem;
-	display: block;
+	display: flex;
+	align-items: center;
+	block-size: 32px;
+	padding: 0 .75rem;
 	white-space: nowrap;
-	border-radius: $radius;
+	border-radius: 7px;
+	color: var(--grey-700);
 	transition: all 100ms;
 
-	&:not(:last-child) {
-		margin-inline-end: .5rem;
-	}
-
 	&:hover {
-		color: var(--switch-view-color);
-		background: var(--switch-view-active-background);
+		color: var(--text-strong);
+		background: hsla(var(--grey-100-hsl), .6);
 	}
 
 	&.is-active {
 		color: var(--switch-view-color);
 		background: var(--switch-view-active-background);
-		font-weight: bold;
-		box-shadow: var(--shadow-xs);
+		box-shadow: var(--shadow-sm);
 	}
 }
 </style>

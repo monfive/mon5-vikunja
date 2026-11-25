@@ -50,8 +50,12 @@ const emit = defineEmits<{
 	column-gap: .5rem;
 	align-items: start;
 	padding-block: .375rem;
-	border-block-end: 1px solid var(--grey-200);
+	border-block-end: 1px solid var(--border-light);
 	transition: background-color $transition;
+
+	&:last-child {
+		border-block-end: 0;
+	}
 
 	dt {
 		display: flex;
@@ -60,7 +64,8 @@ const emit = defineEmits<{
 		// Line up the label with the value's first line, whose control has its own vertical padding.
 		min-block-size: 2rem;
 		color: var(--grey-600);
-		font-weight: 500;
+		font-size: .8125rem;
+		font-weight: 400;
 		transition: color $transition;
 
 		svg {

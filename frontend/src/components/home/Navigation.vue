@@ -197,9 +197,12 @@ const savedFilterProjects = computed(() => projectList.savedFilterProjects)
 
 	display: flex;
 	flex-direction: column;
-	background: var(--site-background);
+	background: var(--white);
+	border-inline-end: 1px solid var(--border-light);
 	color: $vikunja-nav-color;
-	padding: 1rem 0;
+	font-size: .875rem;
+	font-weight: 500;
+	padding: 1rem .75rem;
 	transition: transform $transition-duration ease-in;
 	position: fixed;
 	inset-block-start: $navbar-height;
@@ -247,14 +250,9 @@ const savedFilterProjects = computed(() => projectList.savedFilterProjects)
 }
 
 .top-menu .menu-list {
-	li {
-		font-weight: 600;
-		font-family: $vikunja-font;
-	}
-
 	.list-menu-link,
 	li > a {
-		padding-inline-start: 2rem;
+		padding-inline-start: .625rem;
 		display: inline-block;
 
 		.icon {
@@ -264,6 +262,8 @@ const savedFilterProjects = computed(() => projectList.savedFilterProjects)
 }
 
 .menu + .menu {
-	padding-block-start: math.div($navbar-padding, 2);
+	padding-block-start: .75rem;
+	margin-block-start: .75rem;
+	border-block-start: 1px solid var(--border-light);
 }
 </style>

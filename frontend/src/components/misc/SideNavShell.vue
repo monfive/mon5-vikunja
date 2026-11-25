@@ -84,6 +84,8 @@ function isAliasActive(item: SideNavItem) {
 <style lang="scss" scoped>
 .side-nav-shell {
 	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
 
 	@media screen and (max-width: $tablet) {
 		flex-direction: column;
@@ -92,7 +94,12 @@ function isAliasActive(item: SideNavItem) {
 
 .navigation {
 	inline-size: 25%;
-	padding-inline-end: 1rem;
+	padding: .5rem;
+	background: var(--white);
+	border: 1px solid var(--border-light);
+	border-radius: $radius-large;
+	font-size: .875rem;
+	font-weight: 500;
 
 	@media screen and (max-width: $tablet) {
 		inline-size: 100%;
@@ -101,21 +108,29 @@ function isAliasActive(item: SideNavItem) {
 }
 
 .navigation-link {
-	display: block;
-	padding: .5rem;
-	color: var(--text);
+	display: flex;
+	align-items: center;
+	min-block-size: 36px;
+	padding: 0 .625rem;
+	color: var(--grey-700);
 	inline-size: 100%;
-	border-inline-start: 3px solid transparent;
+	border-radius: $radius;
 
-	&:hover,
+	&:hover {
+		background: var(--grey-100);
+		color: var(--text-strong);
+	}
+
 	&.is-active {
-		background: var(--white);
-		border-color: var(--primary);
+		background: hsla(var(--primary-hsl), .1);
+		color: var(--primary);
+		font-weight: 600;
 	}
 }
 
 .view {
 	inline-size: 75%;
+	min-inline-size: 0;
 
 	@media screen and (max-width: $tablet) {
 		inline-size: 100%;

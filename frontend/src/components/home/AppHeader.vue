@@ -194,7 +194,8 @@ $user-dropdown-width-mobile: 5rem;
 	gap: var(--navbar-gap-width);
 	min-block-size: $navbar-height;
 
-	background: var(--site-background);
+	background: var(--white);
+	border-block-end: 1px solid var(--border-light);
 
 	@media screen and (min-width: $tablet) {
 		padding-inline-start: 2rem;
@@ -210,7 +211,7 @@ $user-dropdown-width-mobile: 5rem;
 	// FIXME: notifications should provide a slot for the icon instead, so that we can style it as we want
 	:deep() {
 		.trigger-button {
-			color: var(--grey-400);
+			color: var(--grey-600);
 			font-size: var(--navbar-icon-size);
 		}
 	}
@@ -228,7 +229,6 @@ $user-dropdown-width-mobile: 5rem;
 }
 
 .menu-button {
-	margin-inline-end: auto;
 	align-self: stretch;
 	flex: 0 0 auto;
 
@@ -238,7 +238,7 @@ $user-dropdown-width-mobile: 5rem;
 }
 
 .project-title-wrapper {
-	margin-inline: auto;
+	margin-inline-end: auto;
 	display: flex;
 	align-items: center;
 
@@ -253,13 +253,14 @@ $user-dropdown-width-mobile: 5rem;
 
 .project-title {
 	font-size: 1rem;
+	font-weight: 600;
 	// We need the following for overflowing ellipsis to work
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
 
 	@media screen and (min-width: $tablet) {
-		font-size: 1.75rem;
+		font-size: 1.125rem;
 	}
 }
 
@@ -278,10 +279,16 @@ $user-dropdown-width-mobile: 5rem;
 	place-items: center;
 	justify-content: center;
 	font-size: var(--navbar-icon-size);
-	color: var(--grey-400);
+	color: var(--grey-600);
+	border-radius: $radius;
+
+	&:hover {
+		background: var(--grey-100);
+	}
 }
 
 .navbar-end {
+	margin-inline-start: auto;
 	flex: 0 0 auto;
 	display: flex;
 	align-items: stretch;

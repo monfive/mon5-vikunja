@@ -88,16 +88,15 @@ const showLoading = useDelayedLoading(() => props.loading)
 
 	// Custom styles
 	transition: all $transition;
-	border: 0;
-	text-transform: uppercase;
-	font-size: 0.85rem;
-	font-weight: bold;
+	border: 1px solid transparent;
+	font-size: 0.8125rem;
+	font-weight: 600;
 	block-size: auto;
 	min-block-size: $button-height;
-	box-shadow: var(--shadow-sm);
+	box-shadow: none;
 	line-height: 1;
-	padding-inline: .5rem;
-	gap: .25rem;
+	padding-inline: .875rem;
+	gap: .375rem;
 
 	// Default/Primary variant colors
 	background-color: var(--primary);
@@ -109,8 +108,7 @@ const showLoading = useDelayedLoading(() => props.loading)
 	}
 
 	&:hover {
-		box-shadow: var(--shadow-md);
-		background-color: var(--primary-dark, color-mix(in srgb, var(--primary) 85%, black));
+		background-color: color-mix(in srgb, var(--primary) 85%, black);
 	}
 
 	&:focus,
@@ -124,7 +122,7 @@ const showLoading = useDelayedLoading(() => props.loading)
 	&:active,
 	&:focus,
 	&:focus:not(:active) {
-		box-shadow: var(--shadow-xs) !important;
+		box-shadow: none !important;
 	}
 
 	&[disabled],
@@ -144,28 +142,31 @@ const showLoading = useDelayedLoading(() => props.loading)
 		color: var(--button-text-color);
 
 		&:hover {
-			background-color: var(--primary-dark, color-mix(in srgb, var(--primary) 85%, black));
+			background-color: color-mix(in srgb, var(--primary) 85%, black);
 		}
 	}
 
 	// Secondary/Outlined variant
 	&.is-outlined {
 		background-color: var(--scheme-main);
-		color: var(--grey-900);
+		border-color: var(--grey-300);
+		color: var(--grey-800);
 
 		&:hover {
-			color: var(--grey-600);
+			background-color: var(--grey-50);
+			border-color: var(--grey-400);
+			color: var(--grey-900);
 		}
 	}
 
 	// Tertiary/Text variant
 	&.is-text {
 		background-color: transparent;
-		color: var(--text);
+		color: var(--grey-700);
 		box-shadow: none;
 
 		&:hover {
-			background-color: var(--grey-100);
+			background-color: hsla(var(--grey-500-hsl), .12);
 			box-shadow: none;
 		}
 	}

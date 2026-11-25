@@ -209,7 +209,7 @@ onBeforeUnmount(() => {
 	}
 
 	@media screen and (min-width: $tablet) {
-		padding: $navbar-height + 1.5rem 1.5rem 0 1.5rem;
+		padding: $navbar-height + 1.5rem 2rem 0 2rem;
 	}
 
 	&.is-menu-enabled {

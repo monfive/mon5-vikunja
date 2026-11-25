@@ -19,13 +19,13 @@
   --background: whitesmoke;
   //--border: #dbdbdb;
   --border-rgb: 219.3, 219.3, 219.3;
-  --border-hover: #b5b5b5;
-  --border-light: #ededed;
-  --border-light-hover: #b5b5b5;
-  --text: #4a4a4a;
+  --border-hover: var(--grey-400);
+  --border-light: var(--grey-200);
+  --border-light-hover: var(--grey-400);
+  --text: var(--grey-900);
   --text-invert: #fff;
-  --text-light: #7a7a7a;
-  --text-strong: #363636;
+  --text-light: var(--grey-600);
+  --text-strong: var(--grey-900);
   --code: #da1039;
   --code-background: var(--background, whitesmoke);
   --pre: var(--text, #4a4a4a);
@@ -177,22 +177,28 @@
 
 
   // Vikunja specific variables
-  --grey-50: hsl(210, 20%, 98%);
-  --grey-100-hsl: 220, 14.3%, 95.9%;
+  // UI refresh grey scale (cool slate)
+  --grey-50: hsl(220, 27.3%, 97.8%);
+  --grey-100-hsl: 220, 17.6%, 96.7%;
   --grey-100: hsl(var(--grey-100-hsl));
-  --grey-200: hsl(220, 13%, 91%);
-  --grey-300: hsl(216, 12.2%, 83.9%);
-  --grey-400: hsl(217.9, 10.6%, 64.9%);
-  --grey-500-hsl: 220, 8.9%, 46.1%;
+  --grey-200: hsl(217.5, 16.7%, 90.6%);
+  --grey-300: hsl(215, 16.7%, 85.9%);
+  --grey-400: hsl(217.1, 14.1%, 70.8%);
+  --grey-500-hsl: 219.2, 10.8%, 52.9%;
   --grey-500: hsl(var(--grey-500-hsl));
-  --grey-600: hsl(215, 13.8%, 34.1%);
-  --grey-700: hsl(216.9, 19.1%, 26.7%);
-  --grey-800: hsl(215, 27.9%, 16.9%);
-  --grey-900: hsl(220.9, 39.3%, 11%);
+  --grey-600: hsl(219.2, 12.5%, 40.8%);
+  --grey-700: hsl(220, 17.1%, 27.5%);
+  --grey-800: hsl(220.9, 20.8%, 20.8%);
+  --grey-900: hsl(222.4, 21.5%, 15.5%);
   --site-background: var(--grey-100);
 
   // Muted body text (metadata, counts) darkened from --grey-500 to clear 4.5:1 on both white and --grey-100
-  --text-muted: hsl(220, 8.9%, 42%);
+  --text-muted: var(--grey-600);
+
+  // Radii (UI refresh): controls, cards/inputs, panels
+  --radius: 8px;
+  --radius-medium: 10px;
+  --radius-large: 12px;
 
   // Overrides of Bulma defaults
   --scheme-main: var(--white);
@@ -202,7 +208,7 @@
   --grey-light: var(--grey-300);
   --grey-lighter: var(--grey-200);
   --grey-lightest: var(--grey-100);
-  --input-border-color: var(--grey-200);
+  --input-border-color: var(--grey-300);
 
   --white-h: 0deg;
   --white-s: 0%;
@@ -246,10 +252,10 @@
   --danger-text-l: 40%;
   --danger-text: hsla(var(--danger-h), var(--danger-s), var(--danger-text-l), var(--danger-a));
 
-  // var(--primary) / $blue is #1973ff
+  // var(--primary) / $blue is #1662d9
   --primary-h: 217deg;
-  --primary-s: 98%;
-  --primary-l: 53%;
+  --primary-s: 82%;
+  --primary-l: 47%;
   --primary-a: 1;
   --primary-hsl: var(--primary-h), var(--primary-s), var(--primary-l);
   --primary: hsla(var(--primary-h), var(--primary-s), var(--primary-l), var(--primary-a));
@@ -259,13 +265,18 @@
   --border: var(--grey-200);
   --input-disabled-background-color: var(--grey-100);
   --input-disabled-border-color: var(--grey-300);
-  --progress-value-background-color: var(--grey-500);
+  --progress-value-background-color: var(--primary);
   // END Overrides of Bulma defaults
 
 
-  // Define custom color variable to prevent change in dark mode
-  --switch-view-color: hsla(var(--white-h), var(--white-s), var(--white-l), var(--white-a));
-  --switch-view-active-background: var(--primary);
+  // View switcher: segmented control, active pill is a raised surface
+  --switch-view-color: var(--primary);
+  --switch-view-active-background: var(--white);
+  --switch-view-track: var(--grey-200);
+
+  // Kanban columns sit between page background and card surface
+  --kanban-column-background: hsl(214, 22.6%, 93.9%);
+  --kanban-column-border: hsl(214, 18%, 88.5%);
 
   // Define custom color variable to allow change in dark mode
   --card-border-color: var(--grey-200);
@@ -281,19 +292,19 @@
   &.dark {
     @media screen {
       // Light mode colours reversed for dark mode
-      --grey-900-hsl: 210, 20%, 98%;
+      --grey-900-hsl: 220, 27.3%, 97.8%;
       --grey-900: hsl(var(--grey-900-hsl));
-      --grey-800: hsl(220, 14.3%, 95.9%);
-      --grey-700: hsl(220, 13%, 91%);
-      --grey-600: hsl(216, 12.2%, 83.9%);
-      --grey-500-hsl: 217.9, 10.6%, 64.9%;
+      --grey-800: hsl(220, 17.6%, 93%);
+      --grey-700: hsl(217.5, 16.7%, 86%);
+      --grey-600: hsl(215, 16.7%, 76%);
+      --grey-500-hsl: 217.1, 14.1%, 64%;
       --grey-500: hsl(var(--grey-500-hsl));
-      --grey-400: hsl(220, 8.9%, 46.1%);
-      --grey-300: hsl(215, 13.8%, 34.1%);
-      --grey-200: hsl(216.9, 19.1%, 26.7%);
-      --grey-100-hsl: 215, 27.9%, 16.9%;
+      --grey-400: hsl(219.2, 10.8%, 46%);
+      --grey-300: hsl(219.2, 12.5%, 32%);
+      --grey-200: hsl(220, 17.1%, 24%);
+      --grey-100-hsl: 220.9, 20.8%, 15.5%;
       --grey-100: hsl(var(--grey-100-hsl));
-      --grey-50-hsl: 220.9, 39.3%, 11%;
+      --grey-50-hsl: 222.4, 21.5%, 11.5%;
       --grey-50: hsl(var(--grey-50-hsl));
 
       // Dark grey looks better than black
@@ -323,17 +334,17 @@
 
       // Custom color variables we need to override
       --card-border-color: hsla(var(--grey-100-hsl), 0.3);
+      --kanban-column-background: hsl(221, 20%, 18%);
+      --kanban-column-border: var(--grey-200);
       --logo-text-color: var(--grey-700);
 
       // Slightly different primary color to make sure it has a sufficient contrast ratio
       --primary-h: 217deg;
-      --primary-s: 98%;
-      --primary-l: 58%;
+      --primary-s: 82%;
+      --primary-l: 62%;
 
       // Muted text is a light grey on dark backgrounds and already passes; keep it
       --text-muted: var(--grey-500);
-      // The lighter dark-mode primary fails white-text contrast on the active view tab, so darken it there
-      --switch-view-active-background: hsl(var(--primary-h), var(--primary-s), 50%);
 
       // Bright values already pass contrast on dark backgrounds; skip the light-theme darkening
       --danger-text: var(--danger);

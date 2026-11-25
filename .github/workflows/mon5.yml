@@ -1,0 +1,31 @@
+# mon5 fork CI. Upstream's workflows are disabled on the fork (see mon5/README.md).
+# Frontend only: we don't change the backend, and upstream tests it.
+name: mon5
+
+on:
+  pull_request:
+    branches: [mon5]
+  push:
+    branches: [mon5]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup-frontend
+      - run: pnpm lint
+      - run: pnpm lint:styles
+      - run: pnpm typecheck
+      - run: pnpm test:unit
+      - run: pnpm build
