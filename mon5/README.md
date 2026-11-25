@@ -10,15 +10,15 @@ Keep changes frontend-only where possible, and keep fork-only files under `mon5/
 
 ## Syncing upstream
 
-The org ruleset on `main` requires changes to go through a PR with a merge commit:
+The org ruleset on `main` blocks direct pushes except for org admins (bypass). As an org admin:
 
 ```sh
 git fetch upstream
-git push origin upstream/main:refs/heads/sync-upstream-$(date +%F)
-gh pr create -B main -H sync-upstream-$(date +%F) --title "chore: sync main with upstream"
-# after merging: PR main -> mon5, resolve any conflicts there
-gh pr create -B mon5 -H main --title "chore: merge upstream into mon5"
+git push origin upstream/main:main   # fast-forward only; fails if main ever diverges
+gh pr create -B mon5 -H main --title "chore: merge upstream into mon5"   # resolve conflicts here
 ```
+
+Without the bypass, push `upstream/main` to a `sync-upstream-<date>` branch and open a PR into `main` instead.
 
 ## Deploy
 
